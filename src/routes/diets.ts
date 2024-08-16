@@ -120,7 +120,7 @@ export async function dietsRoutes(app: FastifyInstance) {
 
         const { id } = deleteDietSchema.parse(request.params)
 
-        const verifyDietsFromUser = await knex('diest').select().where('id', id).andWhere('user_id', user?.id)
+        const verifyDietsFromUser = await knex('diets').select().where('id', id).andWhere('user_id', user?.id)
 
         if (!verifyDietsFromUser) {
             return reply.status(400).send({ message: 'Invalid diet ID' })
